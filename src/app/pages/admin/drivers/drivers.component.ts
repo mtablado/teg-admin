@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { LocalDataSource } from 'ng2-smart-table';
 import { Observable } from 'rxjs';
 import { timer } from 'rxjs/observable/timer';
@@ -16,7 +16,7 @@ import { DriversService } from '../../../../providers/drivers/drivers.service';
     }
   `],
 })
-export class AdminDriversComponent {
+export class AdminDriversComponent implements OnInit {
 
   settings = {
     actions: {
@@ -63,10 +63,14 @@ export class AdminDriversComponent {
   };
 
   source: LocalDataSource = new LocalDataSource();
-  drivers: Driver[];
+  drivers: Driver[] = [];
 
   constructor(private service: DriversService) {
-    this.drivers = [];
+    // Nothing
+  }
+
+  ngOnInit() {
+
     this.service.getDrivers()
       .subscribe((driver: Driver[]) => {
         this.drivers = this.drivers.concat(driver);
@@ -78,8 +82,8 @@ export class AdminDriversComponent {
   }
 
   onEditConfirm(event): void {
-    console.log("data:" + JSON.stringify(event.data));
-    console.log("newData:" + JSON.stringify(event.newData));
+    console.log('data:' + JSON.stringify(event.data));
+    console.log('newData:' + JSON.stringify(event.newData));
     this.service.saveDriver(event.newData)
       .subscribe((driver) => {
         event.confirm.resolve();

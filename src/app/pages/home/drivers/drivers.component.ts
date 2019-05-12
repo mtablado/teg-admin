@@ -52,7 +52,7 @@ export class DriversComponent implements OnInit, OnDestroy {
   }
 
   onDriverClick(event): void {
-    console.log("click event:" + event);
+    console.log('click event:' + event);
     this.driverClicked.emit(event);
   }
 

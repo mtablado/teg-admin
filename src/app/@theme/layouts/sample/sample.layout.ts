@@ -9,7 +9,7 @@ import {
   NbThemeService,
 } from '@nebular/theme';
 
-import { StateService } from '../../../@core/data/state.service';
+import { StateService } from '../../../@core/utils';
 
 // TODO: move layouts into the framework
 @Component({
@@ -49,14 +49,15 @@ import { StateService } from '../../../@core/data/state.service';
         <ngx-footer></ngx-footer>
       </nb-layout-footer-->
 
-      <nb-sidebar class="settings-sidebar"
+      <!--nb-sidebar class="settings-sidebar"
                    tag="settings-sidebar"
                    state="collapsed"
                    fixed
                    [end]="sidebar.id !== 'end'">
         <ngx-theme-settings></ngx-theme-settings>
-      </nb-sidebar>
+      </nb-sidebar-->
     </nb-layout>
+    <!--ngx-toggle-settings-button></ngx-toggle-settings-button-->
   `,
 })
 export class SampleLayoutComponent implements OnDestroy {

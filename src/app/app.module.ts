@@ -17,7 +17,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NbOAuth2AuthStrategy, NbAuthModule, NbOAuth2GrantType, NbAuthOAuth2Token, NbOAuth2ClientAuthMethod } from '@nebular/auth';
 import { AuthGuard } from '../providers/security/auth-guard.service';
 import { httpInterceptorProviders } from '../providers/http/interceptors-index';
-import { environment } from '../environments/environment'
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [AppComponent],
@@ -42,7 +42,7 @@ import { environment } from '../environments/environment'
             endpoint: '/oauth/token',
             grantType: NbOAuth2GrantType.PASSWORD,
             class: NbAuthOAuth2Token,
-          }
+          },
         }),
       ],
       forms: {
@@ -60,9 +60,9 @@ import { environment } from '../environments/environment'
         validation: {
           email: {
             required: false,
-          }
-        }
-      }
+          },
+        },
+      },
     }),
   ],
   bootstrap: [AppComponent],

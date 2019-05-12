@@ -3,6 +3,8 @@ import { Ng2SmartTableModule } from 'ng2-smart-table';
 
 import { ThemeModule } from '../../@theme/theme.module';
 import { DriversService } from '../../../providers/drivers/drivers.service';
+import { AuthGuard } from '../../../providers/security/auth-guard.service';
+import { httpInterceptorProviders } from '../../../providers/http/interceptors-index';
 
 import { AdminRoutingModule, routedComponents } from './admin-routing.module';
 
@@ -17,6 +19,8 @@ import { AdminRoutingModule, routedComponents } from './admin-routing.module';
   ],
   providers: [
     DriversService,
+    httpInterceptorProviders,
+    AuthGuard,
   ],
   entryComponents: [
   ],
