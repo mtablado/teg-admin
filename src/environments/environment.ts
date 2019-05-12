@@ -10,4 +10,10 @@
 
 export const environment = {
   production: false,
+  // server_url: "http://localhost:8080",
+  // server_api: "http://localhost:8080/private/api/v1",
+  server_url: "http://35.198.98.50:28080",
+  server_api: "http://35.198.98.50:28080/private/api/v1",
+  refresh_traffic_interval: 5000,
+  refresh_drivers_interval: 5000,
 };

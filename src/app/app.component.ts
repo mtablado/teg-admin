@@ -4,7 +4,7 @@
  * Licensed under the MIT License. See License.txt in the project root for license information.
  */
 import { Component, OnInit } from '@angular/core';
-import { AnalyticsService } from './@core/utils/analytics.service';
+import { NbThemeService } from '@nebular/theme';
 
 @Component({
   selector: 'ngx-app',
@@ -12,10 +12,11 @@ import { AnalyticsService } from './@core/utils/analytics.service';
 })
 export class AppComponent implements OnInit {
 
-  constructor(private analytics: AnalyticsService) {
+  constructor(private themeService: NbThemeService) {
+    // Nothing to do.
   }
 
-  ngOnInit(): void {
-    this.analytics.trackPageViews();
+  ngOnInit() {
+    this.themeService.changeTheme('corporate');
   }
 }
