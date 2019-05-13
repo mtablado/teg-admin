@@ -14,7 +14,11 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ThemeModule } from './@theme/theme.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { NbOAuth2AuthStrategy, NbAuthModule, NbOAuth2GrantType, NbAuthOAuth2Token, NbOAuth2ClientAuthMethod } from '@nebular/auth';
+import { NbOAuth2AuthStrategy,
+  NbAuthModule,
+  NbOAuth2GrantType,
+  NbAuthOAuth2Token,
+  NbOAuth2ClientAuthMethod } from '@nebular/auth';
 import { AuthGuard } from '../providers/security/auth-guard.service';
 import { httpInterceptorProviders } from '../providers/http/interceptors-index';
 import { environment } from '../environments/environment';
@@ -26,7 +30,6 @@ import { environment } from '../environments/environment';
     BrowserAnimationsModule,
     HttpClientModule,
     AppRoutingModule,
-
     NgbModule.forRoot(),
     ThemeModule.forRoot(),
     CoreModule.forRoot(),
