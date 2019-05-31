@@ -1,5 +1,5 @@
 FROM nginx:1.11.3
-MAINTAINER Miguel Tablado migueltablado@gmail.com
+LABEL maintainer "Miguel Tablado migueltablado@gmail.com"
 
 ARG tar_file=""
 #RUN echo "TAR file:" ${tar_file}
