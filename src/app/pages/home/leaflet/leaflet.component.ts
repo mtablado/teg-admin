@@ -136,7 +136,7 @@ export class LeafletComponent implements OnInit, OnDestroy {
   pollingTraffic(): Observable<DriverPosition[]> {
     const traffic$ = this.driversService.traffic();
     const polledTraffic$ = timer(0, environment.refresh_traffic_interval).pipe(
-      concatMap(_ => traffic$)
+      concatMap(_ => traffic$),
     );
     return polledTraffic$;
   }
