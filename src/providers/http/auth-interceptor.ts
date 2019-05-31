@@ -36,7 +36,7 @@ export class AuthInterceptor implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
     console.log('AuthInterceptor Intercepting ' + req.url );
-    const AUTH_ERROR: number = 401;
+    // const AUTH_ERROR: number = 401;
 
     if (!req.url.endsWith('/oauth/token')) {
       console.log('AuthInterceptor request intercepted. Adding token header');

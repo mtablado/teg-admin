@@ -1,15 +1,15 @@
 import { Injectable, OnInit } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { retry } from 'rxjs/operators';
 
-import { environment } from '../../environments/environment'
+import { environment } from '../../environments/environment';
 import { User } from './user-entity';
 
 @Injectable()
 export class UsersService implements OnInit {
 
-  private getUsersURL = environment.server_api + "/users";
+  private getUsersURL = environment.server_api + '/users';
   private getCurrentUserURL = environment.server_api + '/users/current-user';
 
   private headers = new HttpHeaders({
@@ -44,7 +44,7 @@ export class UsersService implements OnInit {
 
     this.http.get<User[]>(this.getUsersURL, this.options)
       .pipe(
-        retry(1)
+        retry(1),
       ).subscribe((users) => {
         console.log(`user received: +${JSON.stringify(users)}`);
         this.users = users;
