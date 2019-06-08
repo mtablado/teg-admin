@@ -7,6 +7,7 @@ import { AuthGuard } from '../../../providers/security/auth-guard.service';
 import { httpInterceptorProviders } from '../../../providers/http/interceptors-index';
 
 import { AdminRoutingModule, routedComponents } from './admin-routing.module';
+import { CheckboxRenderComponent } from './drivers/checkbox-render.component';
 
 @NgModule({
   imports: [
@@ -16,6 +17,7 @@ import { AdminRoutingModule, routedComponents } from './admin-routing.module';
   ],
   declarations: [
     ...routedComponents,
+    CheckboxRenderComponent,
   ],
   providers: [
     DriversService,
@@ -23,6 +25,7 @@ import { AdminRoutingModule, routedComponents } from './admin-routing.module';
     AuthGuard,
   ],
   entryComponents: [
+    CheckboxRenderComponent,
   ],
 })
 export class AdminModule { }

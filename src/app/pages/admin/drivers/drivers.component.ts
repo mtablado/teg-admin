@@ -4,6 +4,7 @@ import { LocalDataSource } from 'ng2-smart-table';
 import { log } from '../../../../providers/log/logger.service';
 import { Driver } from '../../../../providers/drivers/driver-entity';
 import { DriversService } from '../../../../providers/drivers/drivers.service';
+import { CheckboxRenderComponent } from './checkbox-render.component';
 
 @Component({
   selector: 'ngx-drivers-table',
@@ -54,10 +55,19 @@ export class AdminDriversComponent implements OnInit {
       username: {
         title: 'Usuario',
         type: 'string',
+        editable: 'false',
       },
       status: {
         title: 'Estado',
         type: 'string',
+      },
+      enabled: {
+        title: 'Activo',
+        type: 'custom',
+        renderComponent: CheckboxRenderComponent,
+        editor: {
+          type: 'checkbox',
+        },
       },
     },
   };
@@ -71,7 +81,7 @@ export class AdminDriversComponent implements OnInit {
 
   ngOnInit() {
 
-    this.service.getDrivers()
+    this.service.getAllDrivers()
       .subscribe((driver: Driver[]) => {
         this.drivers = this.drivers.concat(driver);
         this.source.load(this.drivers);
