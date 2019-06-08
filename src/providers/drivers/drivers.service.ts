@@ -2,12 +2,10 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { retry } from 'rxjs/operators';
-// import { oboe } from 'oboe/dist/oboe-browser';
 
 import { environment } from '../../environments/environment';
 import { Driver } from './driver-entity';
 import { DriverPosition } from './driver-position-entity';
-import { HttpParamsOptions } from '@angular/common/http/src/params';
 
 @Injectable()
 export class DriversService {
