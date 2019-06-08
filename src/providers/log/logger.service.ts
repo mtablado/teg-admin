@@ -1,7 +1,5 @@
 import { debug } from 'debug';
 
-const error = debug('app:error');
-
 // by default stderr is used
 // error('goes to stderr!');
 

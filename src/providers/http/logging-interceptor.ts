@@ -5,12 +5,17 @@ import {
 import { Observable } from 'rxjs';
 import { finalize, tap, catchError } from 'rxjs/operators';
 
+import { log } from '../log/logger.service';
+
 @Injectable()
 export class LoggingInterceptor implements HttpInterceptor {
+
+  private logger: debug.Debugger = log.extend('logging-interceptor');
+
   constructor(/*private messenger: MessageService*/) {}
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    console.log('LoggingInterceptor Intercepting ' + req.url );
+    this.logger('LoggingInterceptor Intercepting ' + req.url );
 
     const started = Date.now();
     let msg: string;
@@ -38,7 +43,7 @@ export class LoggingInterceptor implements HttpInterceptor {
              ${msg} in ${elapsed} ms.`;
 
           // this.messenger.add(msg);
-          console.log(logMsg);
+          this.logger(logMsg);
         }),
       );
   }

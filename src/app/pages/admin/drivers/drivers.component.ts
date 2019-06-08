@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LocalDataSource } from 'ng2-smart-table';
-import { Observable } from 'rxjs';
-import { timer } from 'rxjs/observable/timer';
-import { concatMap } from 'rxjs/operators';
 
+import { log } from '../../../../providers/log/logger.service';
 import { Driver } from '../../../../providers/drivers/driver-entity';
 import { DriversService } from '../../../../providers/drivers/drivers.service';
 
@@ -17,6 +15,8 @@ import { DriversService } from '../../../../providers/drivers/drivers.service';
   `],
 })
 export class AdminDriversComponent implements OnInit {
+
+  private logger: debug.Debugger = log.extend('admin-drivers-component');
 
   settings = {
     actions: {
@@ -82,8 +82,8 @@ export class AdminDriversComponent implements OnInit {
   }
 
   onEditConfirm(event): void {
-    console.log('data:' + JSON.stringify(event.data));
-    console.log('newData:' + JSON.stringify(event.newData));
+    this.logger('data:' + JSON.stringify(event.data));
+    this.logger('newData:' + JSON.stringify(event.newData));
     this.service.saveDriver(event.newData)
       .subscribe((driver) => {
         event.confirm.resolve();
