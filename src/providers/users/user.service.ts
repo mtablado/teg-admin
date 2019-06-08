@@ -4,11 +4,13 @@ import { Observable } from 'rxjs';
 import { retry } from 'rxjs/operators';
 
 import { environment } from '../../environments/environment';
+import { log } from '../log/logger.service';
 import { User } from './user-entity';
 
 @Injectable()
 export class UsersService implements OnInit {
 
+  private logger: debug.Debugger = log.extend('users-service');
   private getUsersURL = environment.server_api + '/users';
   private getCurrentUserURL = environment.server_api + '/users/current-user';
 
@@ -27,7 +29,7 @@ export class UsersService implements OnInit {
   users: User[] = [];
 
   ngOnInit(): void {
-    console.log('Loading data on init.');
+    this.logger('Loading data on init.');
     this.loadData();
   }
 
@@ -46,7 +48,7 @@ export class UsersService implements OnInit {
       .pipe(
         retry(1),
       ).subscribe((users) => {
-        console.log(`user received: +${JSON.stringify(users)}`);
+        this.logger(`user received: +${JSON.stringify(users)}`);
         this.users = users;
       });
   }

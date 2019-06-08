@@ -6,10 +6,12 @@ import {
 import { Observable } from 'rxjs';
 import { NbAuthService, NbAuthToken } from '@nebular/auth';
 
+import { log } from '../log/logger.service';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
 
+  private logger: debug.Debugger = log.extend('auth-interceptor');
   private authToken: any;
 
   constructor(private authService: NbAuthService) {
@@ -35,11 +37,11 @@ export class AuthInterceptor implements HttpInterceptor {
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
-    console.log('AuthInterceptor Intercepting ' + req.url );
+    this.logger('AuthInterceptor Intercepting ' + req.url );
     // const AUTH_ERROR: number = 401;
 
     if (!req.url.endsWith('/oauth/token')) {
-      console.log('AuthInterceptor request intercepted. Adding token header');
+      this.logger('AuthInterceptor request intercepted. Adding token header');
 
       const authReq = req.clone({
         headers: req.headers.set('Authorization', 'Bearer ' + this.authToken),
@@ -49,7 +51,7 @@ export class AuthInterceptor implements HttpInterceptor {
       return next.handle(authReq);
 
     } else {
-      console.log('AuthInterceptor /oauth/token request intercepted. Leaving the request as it is.');
+      this.logger('AuthInterceptor /oauth/token request intercepted. Leaving the request as it is.');
       return next.handle(req);
     }
 

@@ -5,6 +5,7 @@ import { timer } from 'rxjs/observable/timer';
 import { concatMap } from 'rxjs/operators';
 
 import { environment } from '../../../../environments/environment';
+import { log } from '../../../../providers/log/logger.service';
 import { Driver } from '../../../../providers/drivers/driver-entity';
 import { DriversService } from '../../../../providers/drivers/drivers.service';
 
@@ -14,6 +15,8 @@ import { DriversService } from '../../../../providers/drivers/drivers.service';
   templateUrl: './drivers.component.html',
 })
 export class DriversComponent implements OnInit, OnDestroy {
+
+  private logger: debug.Debugger = log.extend('drivers-component');
 
   drivers: Driver[];
   recent: any[];
@@ -37,6 +40,7 @@ export class DriversComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
 
+    // debug.enable('drivers-component');
     this.breakpoints = this.breakpointService.getBreakpointsMap();
     this.drivers = [];
     this.driversSubscription = this.pollingDrivers()
@@ -52,7 +56,7 @@ export class DriversComponent implements OnInit, OnDestroy {
   }
 
   onDriverClick(event): void {
-    console.log('click event:' + event);
+    this.logger('click event:' + event);
     this.driverClicked.emit(event);
   }
 

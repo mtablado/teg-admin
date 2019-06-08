@@ -75,21 +75,4 @@ export class DriversService {
 
   }
 
-  // loadWithOboe() {
-  //   let oboeHeaders = {
-  //     'Content-Type':  'application/stream+json',
-  //     'Authorization':  'bearer 793706ca-9bbe-4832-99ca-f46af402310d'
-  //   }
-  //
-  //   oboe({
-  //     url: this.getDriversURL,
-  //     method: 'GET',          // optional
-  //     headers: oboeHeaders,         // optional
-  //   }).node('!.*', function(driver) {
-  //     console.log('Driver: ' + JSON.stringify(driver));
-  //   }).done(function( finalJson ) {
-  //     console.log( finalJson );
-  //   });
-  //
-  // }
 }

@@ -7,6 +7,7 @@ import * as L from 'leaflet';
 import 'style-loader!leaflet/dist/leaflet.css';
 
 import { environment } from '../../../../environments/environment';
+import { log } from '../../../../providers/log/logger.service';
 import { Driver } from '../../../../providers/drivers/driver-entity';
 import { DriverPosition } from '../../../../providers/drivers/driver-position-entity';
 import { DriversService } from '../../../../providers/drivers/drivers.service';
@@ -26,6 +27,8 @@ import { DriversService } from '../../../../providers/drivers/drivers.service';
 })
 export class LeafletComponent implements OnInit, OnDestroy {
 
+  private logger: debug.Debugger = log.extend('leaflet-component');
+
   options = {
     layers: [
       L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 18, attribution: '...' }),
@@ -36,7 +39,7 @@ export class LeafletComponent implements OnInit, OnDestroy {
 
   @Input()
   set driverClickedEvent(driver: Driver) {
-    console.log('Driver selected:' + JSON.stringify(driver));
+    this.logger('Driver selected:' + JSON.stringify(driver));
     // onInit will set to null.
     if (driver) {
       if (this.map) {
@@ -48,7 +51,7 @@ export class LeafletComponent implements OnInit, OnDestroy {
           }
           this.map.flyTo(marker.getLatLng()/*, {zoom: zoom}*/);
         } else {
-          console.log('The selected driver is not in the map.');
+          log('The selected driver is not in the map.');
         }
       }
     }
@@ -77,7 +80,7 @@ export class LeafletComponent implements OnInit, OnDestroy {
 
         // var driverMarker = L.marker([37.8915500, -4.7727500]);
         // driverMarker.addTo(this.map);
-        console.log('Drivers received' + JSON.stringify(drivers));
+        this.logger('Drivers received' + JSON.stringify(drivers));
 
         const _m = this.map;
         const _d = this.drivers;
