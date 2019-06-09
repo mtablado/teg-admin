@@ -10,15 +10,17 @@ import { Observable, zip } from 'rxjs';
 
 @Injectable()
 export class RoleGuard implements CanActivate {
-
+  // User roles are hierarchichal for easy management. Only one role per user.
   private role: string;
 
   constructor(private authService: NbAuthService,
     private router: Router,
     private usersService: UsersService) {
 
+    // Prepare user's role for better performance.
     this.loadUser();
 
+    // Reload user's role if the token changes.
     this.authService.onTokenChange()
       .subscribe((token: NbAuthOAuth2Token) => {
         if (token.isValid()) {
@@ -34,6 +36,7 @@ export class RoleGuard implements CanActivate {
   }
 
   private getRole(): Observable<String> {
+    // If the role is preloaded, use it, if not, go for it.
     const role$: Observable<String> = new Observable<String>((observer) => {
       if (this.role) {
         observer.next(this.role);
@@ -61,6 +64,7 @@ export class RoleGuard implements CanActivate {
     const auth$ = this.authService.isAuthenticated();
     const role$ = this.getRole();
 
+    // By zipping both observers we can create the and clause.
     return zip(auth$, role$)
       .pipe(
         map(([auth, role]) => {
