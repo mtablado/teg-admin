@@ -20,8 +20,10 @@ import { NbOAuth2AuthStrategy,
   NbAuthOAuth2Token,
   NbOAuth2ClientAuthMethod } from '@nebular/auth';
 import { AuthGuard } from '../providers/security/auth-guard.service';
+import { RoleGuard } from '../providers/security/role-guard.service';
 import { httpInterceptorProviders } from '../providers/http/interceptors-index';
 import { environment } from '../environments/environment';
+import { UsersService } from '../providers/users/user.service';
 
 @NgModule({
   declarations: [AppComponent],
@@ -74,6 +76,8 @@ import { environment } from '../environments/environment';
     { provide: APP_BASE_HREF, useValue: '/' },
     httpInterceptorProviders,
     AuthGuard,
+    RoleGuard,
+    UsersService,
   ],
 })
 export class AppModule {
