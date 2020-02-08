@@ -18,7 +18,7 @@ const routes: Routes = [{
     data: {
       expectedRole: 'ADMIN',
     },
-    loadChildren: './admin/admin.module#AdminModule',
+    loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule),
   }, {
     path: '',
     redirectTo: 'home',
