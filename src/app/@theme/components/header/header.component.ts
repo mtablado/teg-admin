@@ -1,10 +1,13 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NbMediaBreakpointsService, NbMenuService, NbSidebarService, NbThemeService } from '@nebular/theme';
+import { NbAuthOAuth2Token, NbAuthService } from '@nebular/auth';
 
-import { UserData } from '../../../@core/data/users';
 import { LayoutService } from '../../../@core/utils';
 import { map, takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
+
+import { User } from '../../../../providers/users/user-entity';
+import { UsersService } from '../../../../providers/users/user.service';
 
 @Component({
   selector: 'ngx-header',
@@ -43,17 +46,28 @@ export class HeaderComponent implements OnInit, OnDestroy {
   constructor(private sidebarService: NbSidebarService,
               private menuService: NbMenuService,
               private themeService: NbThemeService,
-              private userService: UserData,
+              private authService: NbAuthService,
+              private usersService: UsersService,
               private layoutService: LayoutService,
               private breakpointService: NbMediaBreakpointsService) {
   }
 
   ngOnInit() {
-    this.currentTheme = this.themeService.currentTheme;
 
-    this.userService.getUsers()
-      .pipe(takeUntil(this.destroy$))
-      .subscribe((users: any) => this.user = users.nick);
+    this.authService.onTokenChange()
+    .subscribe((token: NbAuthOAuth2Token) => {
+
+      if (token.isValid()) {
+        // TODO find user at backend.
+        this.usersService.currentUser().subscribe(
+          (user: User) => this.user = user,
+        );
+
+      }
+
+    });
+
+    this.currentTheme = this.themeService.currentTheme;
 
     const { xl } = this.breakpointService.getBreakpointsMap();
     this.themeService.onMediaQueryChange()
