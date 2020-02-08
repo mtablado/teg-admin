@@ -6,6 +6,7 @@ import { concatMap } from 'rxjs/operators';
 import * as L from 'leaflet';
 import 'style-loader!leaflet/dist/leaflet.css';
 
+
 import { environment } from '../../../../environments/environment';
 import { log } from '../../../../providers/log/logger.service';
 import { Driver } from '../../../../providers/drivers/driver-entity';

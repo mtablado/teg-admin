@@ -13,6 +13,7 @@ import { CoreModule } from './@core/core.module';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ThemeModule } from './@theme/theme.module';
+import { NbMenuModule } from '@nebular/theme';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NbOAuth2AuthStrategy,
   NbAuthModule,
@@ -34,6 +35,7 @@ import { UsersService } from '../providers/users/user.service';
     AppRoutingModule,
     NgbModule.forRoot(),
     ThemeModule.forRoot(),
+    NbMenuModule.forRoot(),
     CoreModule.forRoot(),
     NbAuthModule.forRoot({
       strategies: [

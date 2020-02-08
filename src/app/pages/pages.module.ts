@@ -4,6 +4,7 @@ import { PagesRoutingModule } from './pages-routing.module';
 import { PagesComponent } from './pages.component';
 import { HomeModule } from './home/home.module';
 import { ThemeModule } from '../@theme/theme.module';
+import { NbMenuModule } from '@nebular/theme';
 
 const PAGES_COMPONENTS = [
   PagesComponent,
@@ -14,6 +15,7 @@ const PAGES_COMPONENTS = [
     PagesRoutingModule,
     ThemeModule,
     HomeModule,
+    NbMenuModule,
   ],
   declarations: [
     ...PAGES_COMPONENTS,
