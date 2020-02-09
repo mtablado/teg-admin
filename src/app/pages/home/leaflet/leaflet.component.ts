@@ -18,7 +18,7 @@ import { DriversService } from '../../../../providers/drivers/drivers.service';
   styleUrls: ['./leaflet.component.scss'],
   template: `
     <nb-card>
-      <nb-card-header>Tráfico {{driverClickedEvent}}</nb-card-header>
+      <nb-card-header>Traffic {{driverClickedEvent}}</nb-card-header>
       <nb-card-body>
         <!--div id="leaflet" leaflet [leafletOptions]="options"></div-->
         <div id="leaflet"></div>

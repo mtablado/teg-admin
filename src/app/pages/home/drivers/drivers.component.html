@@ -1,6 +1,6 @@
 <nb-card [size]="breakpoint.width >= breakpoints.xxxl || breakpoint.width < breakpoints.md ? 'large' : 'xlarge'">
   <nb-tabset fullWidth>
-    <nb-tab tabTitle="Conductores">
+    <nb-tab tabTitle="Drivers">
       <div class="contact" *ngFor="let d of drivers" (click)="onDriverClick(d)">
         <nb-user [picture]="d.picture" [name]="d.name" [title]="d.plate" size="large"></nb-user>
         <i class="i-contact nb-phone"></i>
