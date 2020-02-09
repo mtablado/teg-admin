@@ -6,6 +6,7 @@ import { concatMap } from 'rxjs/operators';
 import * as L from 'leaflet';
 import 'style-loader!leaflet/dist/leaflet.css';
 
+
 import { environment } from '../../../../environments/environment';
 import { log } from '../../../../providers/log/logger.service';
 import { Driver } from '../../../../providers/drivers/driver-entity';
@@ -17,7 +18,7 @@ import { DriversService } from '../../../../providers/drivers/drivers.service';
   styleUrls: ['./leaflet.component.scss'],
   template: `
     <nb-card>
-      <nb-card-header>Tráfico {{driverClickedEvent}}</nb-card-header>
+      <nb-card-header>Traffic {{driverClickedEvent}}</nb-card-header>
       <nb-card-body>
         <!--div id="leaflet" leaflet [leafletOptions]="options"></div-->
         <div id="leaflet"></div>

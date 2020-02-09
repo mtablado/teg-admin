@@ -4,6 +4,11 @@ import { NgxEchartsModule } from 'ngx-echarts';
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 
 import { ThemeModule } from '../../@theme/theme.module';
+import {
+  NbCardModule,
+  NbTabsetModule,
+  NbUserModule,
+} from '@nebular/theme';
 import { HomeComponent } from './home.component';
 import { LeafletComponent } from './leaflet/leaflet.component';
 import { DriversComponent } from './drivers/drivers.component';
@@ -14,6 +19,9 @@ import { UsersService } from '../../../providers/users/user.service';
   imports: [
     ThemeModule,
     NgxEchartsModule,
+    NbCardModule,
+    NbTabsetModule,
+    NbUserModule,
     LeafletModule.forRoot(),
   ],
   declarations: [
