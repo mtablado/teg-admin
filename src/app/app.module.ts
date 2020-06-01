@@ -20,7 +20,6 @@ import {
 } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NbOAuth2AuthStrategy,
   NbAuthModule,
   NbOAuth2GrantType,
