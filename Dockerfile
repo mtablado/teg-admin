@@ -14,6 +14,7 @@ COPY . .
 
 # Build the project and copy the files
 RUN npm run build-i18n
+#RUN npm run build:prod
 
 FROM nginx:alpine
 
