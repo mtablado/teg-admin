@@ -40,7 +40,6 @@ import { UsersService } from '../providers/users/user.service';
     HttpClientModule,
     FormsModule,
     AppRoutingModule,
-    NgbModule.forRoot(),
     ThemeModule.forRoot(),
     NbMenuModule.forRoot(),
     NbSidebarModule.forRoot(),
