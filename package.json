@@ -114,6 +114,6 @@
     "ts-node": "3.2.2",
     "tslint": "5.7.0",
     "tslint-language-service": "^0.9.9",
-    "typescript": "3.9"
+    "typescript": "3.8"
   }
 }
