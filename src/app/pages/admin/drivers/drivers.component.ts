@@ -18,6 +18,7 @@ import { CheckboxRenderComponent } from './checkbox-render.component';
 export class AdminDriversComponent implements OnInit {
 
   private logger: debug.Debugger = log.extend('admin-drivers-component');
+  private nameTitle= $localize`:@@admin.drivers.table.header.name:Name`;
 
   settings = {
     actions: {
@@ -41,7 +42,7 @@ export class AdminDriversComponent implements OnInit {
     },
     columns: {
       name: {
-        title: 'Nombre',
+        title: this.nameTitle,
         type: 'string',
       },
       lastname: {

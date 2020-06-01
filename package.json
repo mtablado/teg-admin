@@ -10,7 +10,9 @@
   "scripts": {
     "ng": "ng",
     "conventional-changelog": "conventional-changelog",
+    "i18n:es": "ng xi18n ngx-admin-demo --output-path locale --out-file messages.es.xlf --i18n-format xlf2 --i18n-locale es",
     "start": "ng serve",
+    "start:es": "ng serve --configuration=es",
     "build": "ng build",
     "build:prod": "npm run build -- --prod --aot --i18n-file=src/locale/messages.es.xlf --i18n-format=xlf2 --i18n-locale=es",
     "build-i18n:es": "ng build --output-path=dist/es --aot --prod --base-href /es/ --i18n-file=src/locale/messages.es.xlf --i18n-format=xlf2 --i18n-locale=es",

@@ -69,6 +69,9 @@
                   "with": "src/environments/environment.prod.ts"
                 }
               ]
+            },
+            "es": {
+              "localize": ["es"]
             }
           }
         },
@@ -80,7 +83,10 @@
           "configurations": {
             "production": {
               "browserTarget": "ngx-admin-demo:build:production"
-            }
+            },
+            "es": {
+              "browserTarget": "ngx-admin-demo:build:es"
+            }            
           }
         },
         "extract-i18n": {

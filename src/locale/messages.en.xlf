@@ -286,5 +286,14 @@
         <target>Existing Drivers</target>
       </segment>
     </unit>
-  </file>
+    <unit id="drivers">
+      <notes>
+        <note category="description">home drivers card title</note>
+        <note category="location">app/pages/home/drivers/drivers.component.html:3</note>
+      </notes>
+      <segment>
+        <source>Drivers</source>
+        <target>Drivers</target>
+      </segment>
+    </unit>  </file>
 </xliff>

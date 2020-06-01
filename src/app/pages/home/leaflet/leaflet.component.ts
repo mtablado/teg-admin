@@ -16,15 +16,7 @@ import { DriversService } from '../../../../providers/drivers/drivers.service';
 @Component({
   selector: 'ngx-leaflet',
   styleUrls: ['./leaflet.component.scss'],
-  template: `
-    <nb-card>
-      <nb-card-header>Traffic {{driverClickedEvent}}</nb-card-header>
-      <nb-card-body>
-        <!--div id="leaflet" leaflet [leafletOptions]="options"></div-->
-        <div id="leaflet"></div>
-      </nb-card-body>
-    </nb-card>
-  `,
+  templateUrl: './leaflet.component.html',
 })
 export class LeafletComponent implements OnInit, OnDestroy {
 
