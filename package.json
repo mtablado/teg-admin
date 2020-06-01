@@ -33,16 +33,16 @@
   },
   "dependencies": {
     "@agm/core": "^1.1.0",
-    "@angular/animations": "^8.2.14",
+    "@angular/animations": "^9.1.0",
     "@angular/cdk": "^8.2.3",
-    "@angular/common": "^8.2.14",
-    "@angular/compiler": "^8.2.14",
-    "@angular/core": "^8.2.14",
-    "@angular/forms": "^8.2.14",
-    "@angular/localize": "^9.0.0",
-    "@angular/platform-browser": "^8.2.14",
-    "@angular/platform-browser-dynamic": "^8.2.14",
-    "@angular/router": "^8.2.14",
+    "@angular/common": "^9.1.0",
+    "@angular/compiler": "^9.1.0",
+    "@angular/core": "^9.1.0",
+    "@angular/forms": "^9.1.0",
+    "@angular/localize": "^9.1.0",
+    "@angular/platform-browser": "^9.1.0",
+    "@angular/platform-browser-dynamic": "^9.1.0",
+    "@angular/router": "^9.1.0",
     "@asymmetrik/ngx-leaflet": "3.0.1",
     "@nebular/auth": "5.0.0",
     "@nebular/bootstrap": "5.0.0",
@@ -81,13 +81,13 @@
     "tslib": "^1.10.0",
     "typeface-exo": "0.0.22",
     "web-animations-js": "^2.3.2",
-    "zone.js": "~0.9.1"
+    "zone.js": "~0.10.3"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.803.26",
     "@angular/cli": "^8.3.26",
-    "@angular/compiler-cli": "^8.2.14",
-    "@angular/language-service": "8.2.14",
+    "@angular/compiler-cli": "^9.1.0",
+    "@angular/language-service": "9.1.0",
     "@compodoc/compodoc": "1.0.1",
     "@fortawesome/fontawesome-free": "^5.12.1",
     "@types/d3-color": "1.0.5",
@@ -114,6 +114,6 @@
     "ts-node": "3.2.2",
     "tslint": "5.7.0",
     "tslint-language-service": "^0.9.9",
-    "typescript": "^3.7"
+    "typescript": "3.9"
   }
 }
