@@ -19,6 +19,11 @@ export class AdminDriversComponent implements OnInit {
 
   private logger: debug.Debugger = log.extend('admin-drivers-component');
   private nameTitle= $localize`:@@admin.drivers.table.header.name:Name`;
+  private lastnameTitle= $localize`:@@admin.drivers.table.header.lastname:Lastname`;
+  private plateTitle= $localize`:@@admin.drivers.table.header.plate:Plate`;
+  private usernameTitle= $localize`:@@admin.drivers.table.header.username:Username`;
+  private statusTitle= $localize`:@@admin.drivers.table.header.status:Status`;
+  private isActiveTitle= $localize`:@@admin.drivers.table.header.isActive:Active`;
 
   settings = {
     actions: {
@@ -46,24 +51,24 @@ export class AdminDriversComponent implements OnInit {
         type: 'string',
       },
       lastname: {
-        title: 'Apellidos',
+        title: this.lastnameTitle,
         type: 'string',
       },
       plate: {
-        title: 'Matrícula',
+        title: this.plateTitle,
         type: 'string',
       },
       username: {
-        title: 'Usuario',
+        title: this.usernameTitle,
         type: 'string',
         editable: 'false',
       },
       status: {
-        title: 'Estado',
+        title: this.statusTitle,
         type: 'string',
       },
       enabled: {
-        title: 'Activo',
+        title: this.isActiveTitle,
         type: 'custom',
         renderComponent: CheckboxRenderComponent,
         editor: {
