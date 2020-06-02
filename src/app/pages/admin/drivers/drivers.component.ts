@@ -1,11 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { LocalDataSource } from 'ng2-smart-table';
-import { Observable } from 'rxjs';
-import { timer } from 'rxjs/observable/timer';
-import { concatMap } from 'rxjs/operators';
 
+import { log } from '../../../../providers/log/logger.service';
 import { Driver } from '../../../../providers/drivers/driver-entity';
 import { DriversService } from '../../../../providers/drivers/drivers.service';
+import { CheckboxRenderComponent } from './checkbox-render.component';
 
 @Component({
   selector: 'ngx-drivers-table',
@@ -16,7 +15,10 @@ import { DriversService } from '../../../../providers/drivers/drivers.service';
     }
   `],
 })
-export class AdminDriversComponent {
+export class AdminDriversComponent implements OnInit {
+
+  private logger: debug.Debugger = log.extend('admin-drivers-component');
+  private nameTitle= $localize`:@@admin.drivers.table.header.name:Name`;
 
   settings = {
     actions: {
@@ -40,7 +42,7 @@ export class AdminDriversComponent {
     },
     columns: {
       name: {
-        title: 'Nombre',
+        title: this.nameTitle,
         type: 'string',
       },
       lastname: {
@@ -54,20 +56,33 @@ export class AdminDriversComponent {
       username: {
         title: 'Usuario',
         type: 'string',
+        editable: 'false',
       },
       status: {
         title: 'Estado',
         type: 'string',
       },
+      enabled: {
+        title: 'Activo',
+        type: 'custom',
+        renderComponent: CheckboxRenderComponent,
+        editor: {
+          type: 'checkbox',
+        },
+      },
     },
   };
 
   source: LocalDataSource = new LocalDataSource();
-  drivers: Driver[];
+  drivers: Driver[] = [];
 
   constructor(private service: DriversService) {
-    this.drivers = [];
-    this.service.getDrivers()
+    // Nothing
+  }
+
+  ngOnInit() {
+
+    this.service.getAllDrivers()
       .subscribe((driver: Driver[]) => {
         this.drivers = this.drivers.concat(driver);
         this.source.load(this.drivers);
@@ -78,8 +93,8 @@ export class AdminDriversComponent {
   }
 
   onEditConfirm(event): void {
-    console.log("data:" + JSON.stringify(event.data));
-    console.log("newData:" + JSON.stringify(event.newData));
+    this.logger('data:' + JSON.stringify(event.data));
+    this.logger('newData:' + JSON.stringify(event.newData));
     this.service.saveDriver(event.newData)
       .subscribe((driver) => {
         event.confirm.resolve();

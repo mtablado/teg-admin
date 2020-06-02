@@ -1,16 +1,22 @@
 import { Injectable } from '@angular/core';
 import {
-  HttpInterceptor, HttpHandler, HttpRequest, HttpResponse, HttpEvent
+  HttpInterceptor, HttpHandler, HttpRequest, HttpResponse, HttpEvent,
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { finalize, tap, catchError } from 'rxjs/operators';
-//import { MessageService } from '../message.service';
+
+import { log } from '../log/logger.service';
 
 @Injectable()
 export class LoggingInterceptor implements HttpInterceptor {
+
+  private logger: debug.Debugger = log.extend('logging-interceptor');
+
   constructor(/*private messenger: MessageService*/) {}
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    this.logger('LoggingInterceptor Intercepting ' + req.url );
+
     const started = Date.now();
     let msg: string;
 
@@ -28,7 +34,7 @@ export class LoggingInterceptor implements HttpInterceptor {
           error => {
             msg = `failed (error code: ${error.status}, body was: ${JSON.stringify(error.error)})`;
             return Observable.throw(error);
-          }
+          },
         ),
         // Log when response observable either completes or errors
         finalize(() => {
@@ -36,9 +42,9 @@ export class LoggingInterceptor implements HttpInterceptor {
           const logMsg = `${req.method} "${req.urlWithParams}"
              ${msg} in ${elapsed} ms.`;
 
-          //this.messenger.add(msg);
-          console.log(logMsg);
-        })
+          // this.messenger.add(msg);
+          this.logger(logMsg);
+        }),
       );
   }
 }

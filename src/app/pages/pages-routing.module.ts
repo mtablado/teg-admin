@@ -3,7 +3,8 @@ import { NgModule } from '@angular/core';
 
 import { PagesComponent } from './pages.component';
 import { HomeComponent } from './home/home.component';
-//import { NotFoundComponent } from './miscellaneous/not-found/not-found.component';
+import { RoleGuard } from '../../providers/security/role-guard.service';
+// import { NotFoundComponent } from './miscellaneous/not-found/not-found.component';
 
 const routes: Routes = [{
   path: '',
@@ -13,7 +14,11 @@ const routes: Routes = [{
     component: HomeComponent,
   }, {
     path: 'admin',
-    loadChildren: './admin/admin.module#AdminModule',
+    canActivate: [RoleGuard],
+    data: {
+      expectedRole: 'ADMIN',
+    },
+    loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule),
   }, {
     path: '',
     redirectTo: 'home',

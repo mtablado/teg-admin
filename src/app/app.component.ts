@@ -17,6 +17,6 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.themeService.changeTheme('corporate');
+    this.themeService.changeTheme('default');
   }
 }

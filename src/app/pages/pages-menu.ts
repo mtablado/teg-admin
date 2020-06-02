@@ -2,18 +2,18 @@ import { NbMenuItem } from '@nebular/theme';
 
 export const MENU_ITEMS: NbMenuItem[] = [
   {
-    title: 'Inicio',
-    icon: 'nb-home',
+    title: 'Home',
+    icon: 'home',
     link: '/pages/home',
     home: true,
   },
   {
-    title: 'Administración',
-    icon: 'nb-keypad',
+    title: 'Admin',
+    icon: 'keypad',
     link: '/pages/admin',
     children: [
       {
-        title: 'Camioneros',
+        title: 'Drivers',
         link: '/pages/admin/drivers',
       },
 //      {
@@ -24,7 +24,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
   },
   {
     title: 'Auth',
-    icon: 'nb-locked',
+    icon: 'lock',
     children: [
       {
         title: 'Login',

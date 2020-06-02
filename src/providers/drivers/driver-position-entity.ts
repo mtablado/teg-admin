@@ -9,12 +9,12 @@ export class DriverPosition {
   public status;
 
   public toString() {
-    return "id: " + this.id
-      + ", plate: " + this.plate
-      + ", name: " + this.name
-      + ", time: " + this.time
-      + ", latitude: " + this.latitude
-      + ", longitude: " + this.longitude
-      + ", status: " + this.status;
+    return 'id: ' + this.id
+      + ', plate: ' + this.plate
+      + ', name: ' + this.name
+      + ', time: ' + this.time
+      + ', latitude: ' + this.latitude
+      + ', longitude: ' + this.longitude
+      + ', status: ' + this.status;
   }
 }

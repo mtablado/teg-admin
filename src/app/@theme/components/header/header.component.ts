@@ -1,75 +1,108 @@
-import { Component, Input, OnInit } from '@angular/core';
-
-import { NbMenuService, NbSidebarService } from '@nebular/theme';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { NbMediaBreakpointsService, NbMenuService, NbSidebarService, NbThemeService } from '@nebular/theme';
 import { NbAuthOAuth2Token, NbAuthService } from '@nebular/auth';
-import { AnalyticsService } from '../../../@core/utils/analytics.service';
+
+import { LayoutService } from '../../../@core/utils';
+import { map, takeUntil } from 'rxjs/operators';
+import { Subject } from 'rxjs';
 
 import { User } from '../../../../providers/users/user-entity';
 import { UsersService } from '../../../../providers/users/user.service';
-
 
 @Component({
   selector: 'ngx-header',
   styleUrls: ['./header.component.scss'],
   templateUrl: './header.component.html',
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit, OnDestroy {
 
+  private destroy$: Subject<void> = new Subject<void>();
+  userPictureOnly: boolean = false;
+  user: any;
 
-  @Input() position = 'normal';
+  themes = [
+    {
+      value: 'default',
+      name: 'Light',
+    },
+    {
+      value: 'dark',
+      name: 'Dark',
+    },
+    {
+      value: 'cosmic',
+      name: 'Cosmic',
+    },
+    {
+      value: 'corporate',
+      name: 'Corporate',
+    },
+  ];
 
-  user: User;
+  currentTheme = 'default';
 
-  userMenu = [{ title: 'Profile' }, { title: 'Log out' }];
+  userMenu = [ { title: 'Profile' }, { title: 'Log out' } ];
 
   constructor(private sidebarService: NbSidebarService,
               private menuService: NbMenuService,
+              private themeService: NbThemeService,
               private authService: NbAuthService,
               private usersService: UsersService,
-              private analyticsService: AnalyticsService) {
+              private layoutService: LayoutService,
+              private breakpointService: NbMediaBreakpointsService) {
   }
 
   ngOnInit() {
 
-    // this.authService.getToken()
-    //   .subscribe((token: NbAuthOAuth2Token) => {
-
-    //     if (token.isValid()) {
-    //       // here we receive a payload from the token and assigne it to our `user` variable
-    //       this.user = token.getPayload();
-    //     }
-
-    //   });
-
     this.authService.onTokenChange()
-      .subscribe((token: NbAuthOAuth2Token) => {
+    .subscribe((token: NbAuthOAuth2Token) => {
 
-        if (token.isValid()) {
-          // TODO find user at backend.
-          this.usersService.currentUser().subscribe(
-            (user: User) => this.user = user,
-          );
+      if (token.isValid()) {
+        // TODO find user at backend.
+        this.usersService.currentUser().subscribe(
+          (user: User) => this.user = user,
+        );
 
-        }
+      }
 
-      });
+    });
+
+    this.currentTheme = this.themeService.currentTheme;
+
+    const { xl } = this.breakpointService.getBreakpointsMap();
+    this.themeService.onMediaQueryChange()
+      .pipe(
+        map(([, currentBreakpoint]) => currentBreakpoint.width < xl),
+        takeUntil(this.destroy$),
+      )
+      .subscribe((isLessThanXl: boolean) => this.userPictureOnly = isLessThanXl);
+
+    this.themeService.onThemeChange()
+      .pipe(
+        map(({ name }) => name),
+        takeUntil(this.destroy$),
+      )
+      .subscribe(themeName => this.currentTheme = themeName);
+  }
+
+  ngOnDestroy() {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
+
+  changeTheme(themeName: string) {
+    this.themeService.changeTheme(themeName);
   }
 
   toggleSidebar(): boolean {
     this.sidebarService.toggle(true, 'menu-sidebar');
+    this.layoutService.changeLayoutSize();
+
     return false;
   }
 
-  toggleSettings(): boolean {
-    this.sidebarService.toggle(false, 'settings-sidebar');
-    return false;
-  }
-
-  goToHome() {
+  navigateHome() {
     this.menuService.navigateHome();
-  }
-
-  startSearch() {
-    this.analyticsService.trackEvent('startSearch');
+    return false;
   }
 }

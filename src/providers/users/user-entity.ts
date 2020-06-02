@@ -7,6 +7,7 @@ export class User {
   public name: string;
   public lastname: string;
   public status: string;
+  public type: string;
 
   public toString() {
     return 'rowid: ' + this.rowid
@@ -14,6 +15,7 @@ export class User {
       + ', username: ' + this.username
       + ', name: ' + this.name
       + ', lastname: ' + this.lastname
+      + ', type: ' + this.type
       + ', status: ' + this.status;
   }
 }

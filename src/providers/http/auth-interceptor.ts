@@ -1,16 +1,17 @@
 import { Injectable } from '@angular/core';
 import {
-  HttpInterceptor, HttpHandler, HttpRequest, HttpEvent, HttpErrorResponse, HttpParams
+  HttpInterceptor, HttpHandler, HttpRequest, HttpEvent,
 } from '@angular/common/http';
 
 import { Observable } from 'rxjs';
-//import { finalize, map } from 'rxjs/operators';
 import { NbAuthService, NbAuthToken } from '@nebular/auth';
 
+import { log } from '../log/logger.service';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
 
+  private logger: debug.Debugger = log.extend('auth-interceptor');
   private authToken: any;
 
   constructor(private authService: NbAuthService) {
@@ -36,46 +37,22 @@ export class AuthInterceptor implements HttpInterceptor {
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
-    console.log('AuthInterceptor Intercepting ' + req.url );
-    const AUTH_ERROR: number = 401;
+    this.logger('AuthInterceptor Intercepting ' + req.url );
+    // const AUTH_ERROR: number = 401;
 
     if (!req.url.endsWith('/oauth/token')) {
-      console.log('AuthInterceptor request intercepted. Adding token header');
+      this.logger('AuthInterceptor request intercepted. Adding token header');
 
       const authReq = req.clone({
-        headers: req.headers.set('Authorization', 'Bearer ' + this.authToken)
-      });
-
-      // send cloned request with header to the next handler.
-      return next.handle(authReq)
-
-    } else {
-      console.log('AuthInterceptor /oauth/token request intercepted. Adding content-type header');
-
-      let email = req.body.email;
-      let username = email.substring(0, email.indexOf("@"));
-      let params: HttpParams = new HttpParams()
-        .set('grant_type', req.body.grant_type)
-        .set('client_id', 'ElGarabatoApp')
-        .set('username', username)
-        .set('password', req.body.password);
-
-      // Clone the request and replace the original headers with
-      // cloned headers, updated with the authorization.
-      const authReq = req.clone({
-        headers: req.headers.set('Content-Type', 'application/x-www-form-urlencoded'),
-        params: params,
-        body: {}
+        headers: req.headers.set('Authorization', 'Bearer ' + this.authToken),
       });
 
       // send cloned request with header to the next handler.
       return next.handle(authReq);
-        /*.do(() => {
-          // success
-        }, (error: any) => {
-          console.log('AuthInterceptor error detail: ' + JSON.stringify(error));
-        });*/
 
+    } else {
+      this.logger('AuthInterceptor /oauth/token request intercepted. Leaving the request as it is.');
+      return next.handle(req);
     }
 
   }
