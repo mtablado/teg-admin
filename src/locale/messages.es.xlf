@@ -7,6 +7,7 @@
       </notes>
       <segment>
         <source>Close</source>
+        <target>Cerrar</target>
       </segment>
     </unit>
     <unit id="ngb.carousel.previous">
@@ -15,6 +16,7 @@
       </notes>
       <segment>
         <source>Previous</source>
+        <target>Anterior</target>
       </segment>
     </unit>
     <unit id="ngb.carousel.next">
@@ -23,6 +25,7 @@
       </notes>
       <segment>
         <source>Next</source>
+        <target>Siguiente</target>
       </segment>
     </unit>
     <unit id="ngb.datepicker.previous-month">
@@ -32,6 +35,7 @@
       </notes>
       <segment>
         <source>Previous month</source>
+        <target>Mes anterior</target>
       </segment>
     </unit>
     <unit id="ngb.datepicker.next-month">
@@ -41,6 +45,7 @@
       </notes>
       <segment>
         <source>Next month</source>
+        <target>Mes siguiente</target>
       </segment>
     </unit>
     <unit id="ngb.datepicker.select-month">
@@ -50,6 +55,7 @@
       </notes>
       <segment>
         <source>Select month</source>
+        <target>Selecciona mes</target>
       </segment>
     </unit>
     <unit id="ngb.datepicker.select-year">
@@ -59,6 +65,7 @@
       </notes>
       <segment>
         <source>Select year</source>
+        <target>Selecciona año</target>
       </segment>
     </unit>
     <unit id="ngb.pagination.first">
@@ -67,6 +74,7 @@
       </notes>
       <segment>
         <source>««</source>
+        <target>««</target>
       </segment>
     </unit>
     <unit id="ngb.pagination.previous">
@@ -75,6 +83,7 @@
       </notes>
       <segment>
         <source>«</source>
+        <target>«</target>
       </segment>
     </unit>
     <unit id="ngb.pagination.next">
@@ -83,6 +92,7 @@
       </notes>
       <segment>
         <source>»</source>
+        <target>»</target>
       </segment>
     </unit>
     <unit id="ngb.pagination.last">
@@ -91,6 +101,7 @@
       </notes>
       <segment>
         <source>»»</source>
+        <target>»»</target>
       </segment>
     </unit>
     <unit id="ngb.pagination.first-aria">
@@ -99,6 +110,7 @@
       </notes>
       <segment>
         <source>First</source>
+        <target>Primero</target>
       </segment>
     </unit>
     <unit id="ngb.pagination.previous-aria">
@@ -107,6 +119,7 @@
       </notes>
       <segment>
         <source>Previous</source>
+        <target>Anterior</target>
       </segment>
     </unit>
     <unit id="ngb.pagination.next-aria">
@@ -115,6 +128,7 @@
       </notes>
       <segment>
         <source>Next</source>
+        <target>Siguiente</target>
       </segment>
     </unit>
     <unit id="ngb.pagination.last-aria">
@@ -123,6 +137,7 @@
       </notes>
       <segment>
         <source>Last</source>
+        <target>Último</target>
       </segment>
     </unit>
     <unit id="ngb.progressbar.value">
@@ -131,6 +146,7 @@
       </notes>
       <segment>
         <source><ph id="0" equiv="INTERPOLATION" disp="{{getPercentValue()}}"/>%</source>
+        <target><ph id="0" equiv="INTERPOLATION" disp="{{getPercentValue()}}"/>%</target>
       </segment>
     </unit>
     <unit id="ngb.timepicker.increment-hours">
@@ -139,6 +155,7 @@
       </notes>
       <segment>
         <source>Increment hours</source>
+        <target>Incrementar horas</target>
       </segment>
     </unit>
     <unit id="ngb.timepicker.HH">
@@ -147,6 +164,7 @@
       </notes>
       <segment>
         <source>HH</source>
+        <target>HH</target>
       </segment>
     </unit>
     <unit id="ngb.timepicker.hours">
@@ -155,6 +173,7 @@
       </notes>
       <segment>
         <source>Hours</source>
+        <target>Horas</target>
       </segment>
     </unit>
     <unit id="ngb.timepicker.decrement-hours">
@@ -163,6 +182,7 @@
       </notes>
       <segment>
         <source>Decrement hours</source>
+        <target>Decrementar horas</target>
       </segment>
     </unit>
     <unit id="ngb.timepicker.increment-minutes">
@@ -171,6 +191,7 @@
       </notes>
       <segment>
         <source>Increment minutes</source>
+        <target>Incrementar minutos</target>
       </segment>
     </unit>
     <unit id="ngb.timepicker.MM">
@@ -179,6 +200,7 @@
       </notes>
       <segment>
         <source>MM</source>
+        <target>MM</target>
       </segment>
     </unit>
     <unit id="ngb.timepicker.minutes">
@@ -187,6 +209,7 @@
       </notes>
       <segment>
         <source>Minutes</source>
+        <target>Minutos</target>
       </segment>
     </unit>
     <unit id="ngb.timepicker.decrement-minutes">
@@ -195,6 +218,7 @@
       </notes>
       <segment>
         <source>Decrement minutes</source>
+        <target>Decrementar minutos</target>
       </segment>
     </unit>
     <unit id="ngb.timepicker.increment-seconds">
@@ -203,6 +227,7 @@
       </notes>
       <segment>
         <source>Increment seconds</source>
+        <target>Incrementar segundos</target>
       </segment>
     </unit>
     <unit id="ngb.timepicker.SS">
@@ -211,6 +236,7 @@
       </notes>
       <segment>
         <source>SS</source>
+        <target>SS</target>
       </segment>
     </unit>
     <unit id="ngb.timepicker.seconds">
@@ -219,6 +245,7 @@
       </notes>
       <segment>
         <source>Seconds</source>
+        <target>Segundos</target>
       </segment>
     </unit>
     <unit id="ngb.timepicker.decrement-seconds">
@@ -227,6 +254,7 @@
       </notes>
       <segment>
         <source>Decrement seconds</source>
+        <target>Decrementar segundos</target>
       </segment>
     </unit>
     <unit id="ngb.timepicker.PM">
@@ -235,6 +263,7 @@
       </notes>
       <segment>
         <source>PM</source>
+        <target>PM</target>
       </segment>
     </unit>
     <unit id="ngb.timepicker.AM">
@@ -243,6 +272,7 @@
       </notes>
       <segment>
         <source>AM</source>
+        <target>AM</target>
       </segment>
     </unit>
     <unit id="6450085423636393458">
@@ -253,6 +283,7 @@
       </notes>
       <segment>
         <source>Existing Drivers</source>
+        <target>Camioneros existentes</target>
       </segment>
     </unit>
     <unit id="leaflet.car.header">
@@ -262,6 +293,7 @@
       </notes>
       <segment>
         <source>Traffic</source>
+        <target>Mapa de tráfico</target>
       </segment>
     </unit>
     <unit id="drivers">
@@ -271,6 +303,7 @@
       </notes>
       <segment>
         <source>Drivers</source>
+        <target>Camioneros</target>
       </segment>
     </unit>
   </file>
