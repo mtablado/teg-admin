@@ -55,7 +55,7 @@ const config: ExtraOptions = {
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes, config)
+    RouterModule.forRoot(routes, config),
   ],
   exports: [RouterModule],
 })
