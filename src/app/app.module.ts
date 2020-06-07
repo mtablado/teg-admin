@@ -31,6 +31,11 @@ import { httpInterceptorProviders } from '../providers/http/interceptors-index';
 import { environment } from '../environments/environment';
 import { UsersService } from '../providers/users/user.service';
 
+import { registerLocaleData } from '@angular/common';
+import localeEs from '@angular/common/locales/es';
+
+registerLocaleData(localeEs, 'es');
+
 @NgModule({
   declarations: [AppComponent],
   imports: [

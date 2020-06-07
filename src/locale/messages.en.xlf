@@ -295,5 +295,42 @@
         <source>Drivers</source>
         <target>Drivers</target>
       </segment>
-    </unit>  </file>
+    </unit>
+    <unit id="admin.drivers.table.header.name">
+      <segment>
+        <source>Name</source>
+        <target>Name</target>
+      </segment>
+    </unit>
+    <unit id="admin.drivers.table.header.lastname">
+      <segment>
+        <source>Lastname</source>
+        <target>Lastname</target>
+      </segment>
+    </unit>
+    <unit id="admin.drivers.table.header.plate">
+      <segment>
+        <source>Plate</source>
+        <target>Plate</target>
+      </segment>
+    </unit>
+    <unit id="admin.drivers.table.header.username">
+      <segment>
+        <source>Username</source>
+        <target>Username</target>
+      </segment>
+    </unit>
+    <unit id="admin.drivers.table.header.status">
+      <segment>
+        <source>Status</source>
+        <target>Status</target>
+      </segment>
+    </unit>
+    <unit id="admin.drivers.table.header.isActive">
+      <segment>
+        <source>Active</source>
+        <target>Active</target>
+      </segment>
+    </unit>
+  </file>
 </xliff>
